@@ -1,0 +1,16 @@
+{
+  "hosting": [
+    {
+      "site": "crowdsourcing-iep",
+      "public": "build",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "redirects": [],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

@@ -1,19 +1,19 @@
 export const entityMap = new Map();
 entityMap.set(1, {
-  name: "una Entidad pública",
-  description:
-    "Usan datos para tomar decisiones informadas sobre políticas públicas y servicios, lo que les permite mejorar la calidad de vida de la población. Las entidades públicas pueden identificar tendencias, patrones y áreas problemáticas, y crear soluciones efectivas que satisfagan las necesidades de la sociedad.",
-});
-entityMap.set(2, {
   name: "una Empresa financiera",
   description:
     "como los bancos, utilizan datos para tomar decisiones de inversión y crédito más informadas y precisas. Pueden evaluar los riesgos y oportunidades, y ofrecer soluciones financieras.",
 });
-entityMap.set(3, {
+entityMap.set(2, {
   name: "una Empresa de mercado",
   description:
     "Pueden ser proveedores y/o dedicarse a procesos logísticos. Optimizan sus operaciones y mejorar la eficiencia en la cadena de suministro. Con datos sobre inventario, producción, envíos y entregas, estas empresas identifican patrones para ofrecer soluciones más efectivas y aumentar su competitividad en el mercado.",
 });
+// entityMap.set(3, {
+//   name: "una Entidad pública",
+//   description:
+//     "Usan datos para tomar decisiones informadas sobre políticas públicas y servicios, lo que les permite mejorar la calidad de vida de la población. Las entidades públicas pueden identificar tendencias, patrones y áreas problemáticas, y crear soluciones efectivas que satisfagan las necesidades de la sociedad.",
+// });
 
 export const requestMap = new Map();
 requestMap.set(1, {

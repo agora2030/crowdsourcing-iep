@@ -7,15 +7,17 @@ import React, {
   createRef,
   Ref,
 } from "react";
+import { useNavigate } from "react-router-dom";
 import TinderCard from "react-tinder-card";
 import { entityMap, requestMap, resultMap } from "../utils/mapping";
-import { RowCard } from "./RowCard";
+import { RowCard } from "../components/RowCard";
 
 type DirectionType = "left" | "right";
 
 function Advanced() {
   const [questions, setQuestions] = useState<Array<string>>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
   const currentIndexRef = useRef(currentIndex);
   const canSwipe = currentIndex >= 0;
 
@@ -23,11 +25,16 @@ function Advanced() {
     const newQuestions = generateCombinations();
     setQuestions(newQuestions);
     setCurrentIndex(newQuestions.length - 1);
+    document.body.classList.add("overflow-hidden");
+    localStorage.clear();
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
   }, []);
 
   useEffect(() => {
     if (questions.length === 0) return;
-    const keyDownHandler = (e: {key: string}) => {
+    const keyDownHandler = (e: { key: string }) => {
       if (e.key === "ArrowLeft") swipe("left");
       if (e.key === "ArrowRight") swipe("right");
     };
@@ -52,11 +59,25 @@ function Advanced() {
 
   const swiped = (index: number) => {
     updateCurrentIndex(index - 1);
+    if (index - 1 === 0) {
+      navigate("/test");
+    }
   };
 
   const swipe = async (dir: DirectionType) => {
     if (canSwipe && currentIndex < questions.length) {
       if (childRefs.length > 0) {
+        const questionSwipeItem = localStorage.getItem(
+          `question_swipe${currentIndex}`,
+        );
+        if (questionSwipeItem)
+          localStorage.setItem(
+            `question_swipe${currentIndex}`,
+            JSON.stringify({
+              ...JSON.parse(questionSwipeItem),
+              allow: dir === "right",
+            }),
+          );
         await childRefs[currentIndex].current?.swipe(dir);
       }
     }
@@ -75,7 +96,7 @@ function Advanced() {
   };
 
   return (
-    <div>
+    <div className="app" style={{ overflow: "hidden" }}>
       <div style={{ marginBottom: "40px" }}>
         <h2 className="infoText" style={{ marginBottom: 0 }}>
           {questions.length - currentIndex} de {questions.length}
@@ -105,9 +126,9 @@ function Advanced() {
                 }}
                 className="card"
               >
-                <RowCard type="entity" question={question} />
-                <RowCard type="request" question={question} />
-                <RowCard type="result" question={question} />
+                <RowCard type="entity" question={question} index={index} />
+                <RowCard type="request" question={question} index={index} />
+                <RowCard type="result" question={question} index={index} />
               </div>
             </TinderCard>
           );
@@ -115,7 +136,7 @@ function Advanced() {
       </div>
       <div className="buttons">
         <button
-          style={{ backgroundColor: canSwipe ? undefined : "#c3c4d3" }}
+          style={{ display: canSwipe ? "flex" : "none" }}
           onClick={() => swipe("left")}
         >
           <ArrowFatLineLeft
@@ -126,7 +147,7 @@ function Advanced() {
           NO autorizaría
         </button>
         <button
-          style={{ backgroundColor: canSwipe ? undefined : "#c3c4d3" }}
+          style={{ display: canSwipe ? "flex" : "none" }}
           onClick={() => swipe("right")}
         >
           ¡Autorizaría!

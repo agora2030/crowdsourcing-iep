@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Info } from "phosphor-react";
 import { Tooltip } from "react-tooltip";
 import { entityMap, requestMap, resultMap } from "../utils/mapping";
@@ -6,9 +6,11 @@ import { entityMap, requestMap, resultMap } from "../utils/mapping";
 export const RowCard = ({
   type,
   question,
+  index,
 }: {
   type: "entity" | "request" | "result";
   question: string;
+  index: number;
 }) => {
   const typeMap = {
     entity: { position: 0, map: entityMap, title: "Imagina que:" },
@@ -19,6 +21,23 @@ export const RowCard = ({
   const rowInfo = selectedType.map.get(
     Number(question[selectedType.position]) + 1,
   );
+
+  useEffect(() => {
+    const questionSwipeItem = localStorage.getItem(`question_swipe${index}`);
+    if (questionSwipeItem)
+      localStorage.setItem(
+        `question_swipe${index}`,
+        JSON.stringify({
+          ...JSON.parse(questionSwipeItem),
+          [type]: rowInfo.name,
+        }),
+      );
+    else
+      localStorage.setItem(
+        `question_swipe${index}`,
+        JSON.stringify({ [type]: rowInfo.name }),
+      );
+  }, []);
 
   return (
     <div>
