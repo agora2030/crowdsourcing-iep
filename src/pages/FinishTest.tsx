@@ -27,7 +27,7 @@ export default function FinishTest() {
 
   const titleMessage = "Decidamos el futuro de nuestros datos";
   const urlPage = "https://crowdsourcing-iep.web.app/";
-  const message = `Decidamos el futuro de nuestros datos. Decidamos cómo compartirlos. Yo ya he contribuido paraa crear políticas de datos para empresarios de LATAM junto con #AgoraPartnerships, súmate y compártelo 👉 ${urlPage}`;
+  const message = `Decidamos el futuro de nuestros datos. Decidamos cómo compartirlos. Yo ya he contribuido para crear políticas de datos más justas para empresarios de LATAM junto con %23AgoraPartnerships, súmate y compártelo 👉 ${urlPage}`;
 
   return (
     <div className="cardGeneralContainer" style={{}}>
@@ -127,7 +127,7 @@ export default function FinishTest() {
           style={{ marginRight: "15px" }}
           onClick={() => {
             window.open(
-              `https://www.facebook.com/sharer/sharer.php?u=${urlPage}`,
+              `https://www.facebook.com/sharer/sharer.php?u=${urlPage}&quote=${titleMessage}`,
               "_blank",
               "noopener,noreferrer",
             );
@@ -151,7 +151,7 @@ export default function FinishTest() {
           style={{ marginRight: "15px" }}
           onClick={() => {
             window.open(
-              `https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcrowdsourcing-iep.web.app&title=Decidamos%20el%20futuro%20de%20nuestros%20datos.%20&summary=Decidamos%20c%C3%B3mo%20compartirlos.%20Yo%20ya%20he%20contribuido%20a%20crear%20las%20primeras%pol%C3%ADticas%20de%20datos,%20s%C3%BAmate%20y%20comp%C3%A1rtelo%20%3A%20https%3A%2F%2Fcrowdsourcing-iep.web.app`,
+              `https://www.linkedin.com/shareArticle?mini=true&url=${urlPage}&title=${message}`,
               "_blank",
               "noopener,noreferrer",
             );
@@ -191,10 +191,10 @@ export default function FinishTest() {
         }}
         variant="contained"
         onClick={() => {
-          navigator.clipboard.writeText(urlPage);
+          navigator.clipboard.writeText(message);
         }}
       >
-        Copiar enlace para compartir
+        Copiar texto y enlace para compartir
       </Button>
 
       <Button
