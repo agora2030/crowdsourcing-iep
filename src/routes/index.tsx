@@ -1,34 +1,55 @@
-import { Button } from "@mui/material";
 import React from "react";
-import { createRoot } from "react-dom/client";
 import { createBrowserRouter } from "react-router-dom";
 import Advanced from "../pages/Advanced";
 import FinishTest from "../pages/FinishTest";
 import Home from "../pages/Home";
+import NotFound from "../pages/NotFound";
 import Privacy from "../pages/Privacy";
 import Profile from "../pages/Profile";
 import Test from "../pages/Test";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    ),
+    errorElement: <NotFound />,
   },
   {
     path: "questions",
-    element: <Advanced />,
+    element: (
+      <ProtectedRoute>
+        <Advanced />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "privacy",
-    element: <Privacy />,
+    element: (
+      <ProtectedRoute>
+        <Privacy />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "test",
-    element: <Test />,
+    element: (
+      <ProtectedRoute>
+        <Test />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "profile",
-    element: <Profile />,
+    element: (
+      <ProtectedRoute>
+        <Profile />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "thanks",

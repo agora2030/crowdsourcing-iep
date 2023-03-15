@@ -43,6 +43,10 @@ body {
   overflow: hidden;
 }
 
+.overflow-y {
+  overflow-y: overlay;
+}
+
 .row > * {
   margin: 5px;
 }
@@ -135,6 +139,7 @@ p {
 }
 
 .title-main {
+  text-align: center;
   font-family: "Alatsi";
   color: #19417f;
 }

@@ -1,12 +1,25 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Image } from "mui-image";
+import PrivacyDialog from "./PrivacyDialog";
 
 export default function Home() {
   const navigate = useNavigate();
+  const acceptedTermsLocal = localStorage.getItem("acceptedTerms");
+  const [openPrivacy, setOpenPrivacy] = useState(false);
+  const [dialogOpened, setDialogOpened] = useState(Boolean(acceptedTermsLocal) || false);
+  const [acceptedTerms, setAcceptedTerms] = useState(Boolean(acceptedTermsLocal) || false);
+
+  const handleClickDialog = () => {
+    setOpenPrivacy(!openPrivacy);
+    if (openPrivacy === true) setDialogOpened(true);
+  };
+
+  const disabled = !acceptedTerms || !dialogOpened;
+
   return (
-    <div className="cardGeneralContainer" style={{}}>
+    <div className="cardGeneralContainer">
       <Image
         src="logo.png"
         height="auto"
@@ -18,26 +31,61 @@ export default function Home() {
       </h1>
       <p style={{ marginBottom: "35px" }}>
         Sé parte de la iniciativa de Agora que busca construir una política que
-        le permita empresarios/emprendedores como tú, compartir datos de forma
-        segura y eficiente. ¿Cómo? Contestando las siguientes preguntas, nos
-        ayudarás a definir una política más justa y beneficiosa para los
-        empresarios, empresarias y sus clientes
+        le permita a empresarios/emprendedores como tú, compartir datos de forma
+        segura y eficiente. ¿Cómo? Contestando unas pocas siguientes preguntas,
+        nos ayudarás a definir una política más justa y beneficiosa para los
+        empresarios, empresarias y sus clientes.
       </p>
-      <Button
-        style={{ color: "#19417f", marginBottom: "15px", fontFamily: "Alatsi" }}
-        variant="text"
-        onClick={() => {
-          navigate("/privacy");
-        }}
-      >
-        Leer la política de privacidad y uso de datos de este sitio.
-      </Button>
+      <PrivacyDialog
+        open={openPrivacy}
+        onClose={handleClickDialog}
+        acceptedTerms={acceptedTerms}
+        setAcceptedTerms={setAcceptedTerms}
+      />
+      {acceptedTerms ? (
+        <p
+          className="normal"
+          style={{
+            fontSize: "0.875rem",
+            textAlign: "center",
+            color: "green",
+            marginBottom: "15px",
+            paddingBottom: "6px",
+          }}
+        >
+          Has leído y aceptado la{" "}
+          <span
+            style={{ textDecoration: "underline" }}
+            onClick={() => {
+              navigate("/privacy");
+            }}
+          >
+            política de privacidad
+          </span>{" "}
+          y uso de datos de este sitio.
+        </p>
+      ) : (
+        <Button
+          style={{
+            color: "#19417f",
+            marginBottom: "15px",
+            fontFamily: "Alatsi",
+            textDecoration: "underline",
+          }}
+          variant="text"
+          onClick={handleClickDialog}
+        >
+          Leer y aceptar la política de privacidad y uso de datos de este sitio.
+        </Button>
+      )}
+      <p className="normal"></p>
       <Button
         style={{
-          backgroundColor: "#19417f",
+          backgroundColor: disabled ? undefined : "#19417f",
           marginBottom: "15px",
           fontFamily: "Alatsi",
         }}
+        disabled={disabled}
         variant="contained"
         onClick={() => {
           navigate("/questions");

@@ -9,6 +9,7 @@ module.exports = async function (env, argv) {
         dangerouslyAddModulePathsToTranspile: [
           "@rneui/base",
           "@rneui/themed",
+          "@planetscale/database",
         ],
       },
     },

@@ -1,40 +1,50 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Privacy() {
-  const navigate = useNavigate();
+export const PrivacyContent = () => {
+  useEffect(() => {
+    document.body.classList.add("overflow-y");
+
+    return () => {
+      document.body.classList.remove("overflow-y");
+    };
+  }, []);
+
   return (
-    <div className="cardGeneralContainer" style={{}}>
+    <div>
       <h1 className="title-main">POLÍTICA DE PRIVACIDAD</h1>
       <p className="title">
         ¿Quién es el responsable de tratamiento de tus datos personales?
       </p>
       <p className="normal">
-        Agora Partnerships ® <br />
-        Washington, District of Columbia, United States <br />
-        Tel: 202-580-8776 <br />
+        Agora Partnerships ® en adelante Agora <br />
+        260 Madison Avenue, 8th Floor, Manhattan, NY, United States, New York{" "}
+        <br />
+        Tel: +52 55 6138 7517 <br />
         email: info@agora2030.org <br />
       </p>
 
       <p className="title">¿Con qué finalidad tratamos tus datos personales?</p>
       <p className="normal">
-        El proyecto TRIEM, al que esta página web presta soporte, es totalmente
-        anónimo y, por ello, su cuestionario no recoge ningún dato de carácter
-        personal y tus respuestas no pueden asociarse a ti de ninguna forma. Los
-        únicos datos personales que podemos recoger son aquellos que facilites
-        tú mismo al escribirnos a través de las vías que facilitamos para que
-        puedas contactar con nosotros. Estos datos van a ser tratados con la
-        única finalidad de atender la consulta que nos dirijas según la
-        naturaleza de la misma y la base jurídica que nos permite llevar a cabo
-        este tratamiento es tu consentimiento.
+        La organización sin ánimo de lucro Agora, la cual presta soporte a esta
+        página web, manifierta que este proyecto es totalmente anónimo y, por
+        ello, el cuestionario no recoge ni esta relacionado ningún dato de
+        carácter personal, de esta manera tus respuestas no pueden asociarse a
+        ti de ninguna forma. Los únicos datos personales que podemos recoger son
+        aquellos que facilites tú mismo al escribirnos a través de las vías que
+        facilitamos para que puedas contactar con nosotros. Estos datos van a
+        ser tratados con la única finalidad de atender la consulta que nos
+        dirijas según la naturaleza de la misma y la base jurídica que nos
+        permite llevar a cabo este tratamiento es tu consentimiento.
       </p>
 
       <p className="title">¿Cuánto tiempo vamos a conservar tus datos?</p>
       <p className="normal">
-        Los datos personales que nos proporciones serán conservados mientras el
-        proyecto TRIEM esté vigente, es decir, hasta el mes de marzo de 2019 y
-        siempre que no solicites su supresión. Una vez alcanzada esa fecha,
+        Los datos que nos proporciones serán conservados mientras el este
+        proyecto se encuentre vigente o sean relevantes para las etapas
+        iniciales del estudio, es decir, hasta finales del año 2023 y siempre
+        que no solicites su supresión. Una vez alcanzada esa fecha,
         conservaremos los datos bloqueados para atender cualquier
         responsabilidad legal que pudiera surgir pero no estarán disponibles
         para su tratamiento.
@@ -43,10 +53,10 @@ export default function Privacy() {
       <p className="title">¿A qué destinatarios se comunicarán tus datos?</p>
       <p className="normal">
         No comunicaremos tus datos a ningún tercero salvo en aquellos casos en
-        que lo establece la Ley. Los daros recabados a través de TRIEM serán
-        analizados por Ideas 3493 S.L. (CIF B62051743), SALUS GOVERNANCE OF
-        HEALTH DATA, S.C.C.L. (F-67114629) y Fundació per a la Universitat
-        Oberta de Catalunya (G-60667813).
+        que lo establece la Ley. Los datos recabados a través de este sitio
+        serán únicamente analizados por Agora. Algunos resultados sumarizados
+        podrían ser compartidos con algunos aliados de Agora, pero nunca con
+        datos personales.
       </p>
 
       <p className="title">
@@ -59,32 +69,64 @@ export default function Privacy() {
         para los fines para los que los recogimos. También puedes solicitar la
         limitación, portabilidad y oposición del tratamiento de tus datos, en
         determinadas circunstancias y por motivos relacionados con tu situación
-        particular. En caso de que no obtengas una respuesta satisfactoria y
-        quieras formular una reclamación u obtener mayor información al respecto
-        de cualquiera de estos derechos, puedes acudir a la Agencia Española de
-        Protección de Datos (www.aepd.es - C/ Jorge Juan, 6 de Madrid).
+        particular.
       </p>
 
       <p className="title">Cambios en la política</p>
       <p className="normal">
-        Si cambiamos el tipo de cookies utilizamos, te informaremos, no te
-        preocupes. Podrás seguir aceptando, rechazando o configurando tus
-        preferencias. Siempre tendrás toda la información necesaria disponible
-        en esta política. Y, si tienes cualquier duda, puedes contactar con
-        nosotros a través deinfo@ideasforchange.com
+        Agora se plantea no actualizar esta polítca, pero en caso de hacerlo, no
+        te preocupes, lo informaremos por medio de nuestras redes. Podrás seguir
+        aceptando, rechazando o configurando tus preferencias. Siempre tendrás
+        toda la información necesaria disponible en esta política. Y, si tienes
+        cualquier duda, puedes contactar con nosotros a través de
+        info@agora2030.org
       </p>
+
+      <p className="title">
+        ¿Qué estas autorizando/rechazando al responder las preguntas?
+      </p>
+      <p className="normal">
+        No estas autorizando/rechazando nada en particular, simplemente estas
+        respondiendo las preguntas que nos servirán como insumo para construir
+        la política de datos de nuestra Plataforma de Itercambio de Información
+        (IEP).
+      </p>
+
+      <p className="title">¿Qué es una IEP?</p>
+      <p className="normal">
+        Actualmente la planteamos como: Una plataforma digital diseñada para
+        facilitar la comunicación y colaboración entre personas en el ámbito
+        emprendedor, ayudándolas a hacer crecer sus negocios y alianzas. La
+        plataforma debe ofrecer acceso a información actualizada y verificable,
+        así como a oportunidades de colaboración, financiamiento y aumento de
+        visibilidad. Además, se debe enfocar en garantizar la privacidad,
+        seguridad y descentralización de la información compartida. En este
+        espacio seguro, se podría interactuar con otras personas con perfiles
+        similares, tener foros de discusión, gestionar contactos y hacer
+        preguntas.
+      </p>
+    </div>
+  );
+};
+
+export default function Privacy() {
+  const navigate = useNavigate();
+  return (
+    <div className="cardGeneralContainer" style={{}}>
+      <PrivacyContent />
 
       <Button
         style={{
           borderColor: "#19417f",
           color: "#19417f",
           marginTop: "25px",
+          marginBottom: "35px",
           fontFamily: "Alatsi",
         }}
         variant="outlined"
         onClick={() => {
-            navigate("/");
-          }}
+          navigate("/");
+        }}
       >
         Volver
       </Button>

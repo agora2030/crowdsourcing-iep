@@ -1,24 +1,19 @@
 import React from "react";
-import ReactDOM from 'react-dom/client';
-import Advanced from "./pages/Advanced";
-import reportWebVitals from './reportWebVitals';
-import './App.css';
-import 'react-tooltip/dist/react-tooltip.css'
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+import "react-tooltip/dist/react-tooltip.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes";
+import "./App.css";
 
 // CONFIGS
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement,
+);
 
-const render = () => (
+const render = () => <RouterProvider router={router} />;
 
-      <RouterProvider router={router} />
-      
-
-  );
-
-
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   root.render(render());
 } else {
   root.render(<React.StrictMode>{render()}</React.StrictMode>);

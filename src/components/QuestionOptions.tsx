@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { Info } from "phosphor-react";
-import { Tooltip } from "react-tooltip";
-import { entityMap, requestMap, resultMap } from "../utils/mapping";
 import { Button, ButtonGroup } from "@mui/material";
 
 export const QuestionOptions = ({
@@ -10,18 +7,23 @@ export const QuestionOptions = ({
   desc,
   options,
   orientation = "horizontal",
+  type,
+  refreshAnswers,
 }: {
   index: string;
   title: string;
   desc?: string;
   options: Array<string>;
   orientation?: "horizontal" | "vertical";
+  type: "risk" | "benefit" | "profile";
+  refreshAnswers: () => void;
 }) => {
   const [question, setQuestion] = useState<number>();
 
   const updateQuestion = (value: string, pos: number) => {
     setQuestion(pos);
-    localStorage.setItem(`question${index}`, value);
+    localStorage.setItem(`question_${type}${index}`, JSON.stringify({ title, type, answer: value }));
+    refreshAnswers();
   };
 
   return (
@@ -29,9 +31,14 @@ export const QuestionOptions = ({
       <p className="title" style={{ textAlign: "center" }}>
         {title}
       </p>
-      {desc && <p className="normal" style={{ textAlign: "center", marginTop: "15px" }}>
-        {desc}
-      </p>}
+      {desc && (
+        <p
+          className="normal"
+          style={{ textAlign: "center", marginTop: "15px" }}
+        >
+          {desc}
+        </p>
+      )}
       <ButtonGroup
         style={{ marginTop: "15px" }}
         variant="outlined"
@@ -41,6 +48,7 @@ export const QuestionOptions = ({
         {options.map((option, pos) => {
           return (
             <Button
+              key={pos}
               style={{
                 borderColor: "#19417f",
                 fontFamily: "Alatsi",

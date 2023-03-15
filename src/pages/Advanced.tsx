@@ -26,7 +26,9 @@ function Advanced() {
     setQuestions(newQuestions);
     setCurrentIndex(newQuestions.length - 1);
     document.body.classList.add("overflow-hidden");
-    localStorage.clear();
+    for (let i = 0; i < 30; i++) {
+      localStorage.removeItem(`question_swipe${i}`);
+    }    
     return () => {
       document.body.classList.remove("overflow-hidden");
     };
