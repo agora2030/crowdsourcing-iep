@@ -2,12 +2,12 @@ export const entityMap = new Map();
 entityMap.set(1, {
   name: "una Empresa financiera",
   description:
-    "como los bancos, utilizan datos para tomar decisiones de inversión y crédito más informadas y precisas. Pueden evaluar los riesgos y oportunidades, y ofrecer soluciones financieras.",
+    "Como bancos, fintechs, microfinancieras, cooperativas de crédito, aseguradoras que utilizan datos para tomar decisiones de inversión y crédito más informadas y precisas. Pueden evaluar los riesgos y oportunidades, y ofrecer soluciones financieras",
 });
 entityMap.set(2, {
   name: "una Empresa de mercado",
   description:
-    "Pueden ser proveedores y/o dedicarse a procesos logísticos. Optimizan sus operaciones y mejorar la eficiencia en la cadena de suministro. Con datos sobre inventario, producción, envíos y entregas, estas empresas identifican patrones para ofrecer soluciones más efectivas y aumentar su competitividad en el mercado.",
+    "Son empresas del sector privado que dan acceso a mercados/canales/clientes como corporativos, retailers, empresas de logística, manufactura, ecommerce, marketplace, entre otros",
 });
 // entityMap.set(3, {
 //   name: "una Entidad pública",
@@ -18,7 +18,7 @@ entityMap.set(2, {
 export const requestMap = new Map();
 requestMap.set(1, {
   name: "Datos de registro de tu empresa.",
-  description: "Como matricula, certificado de registro, licencias y permisos",
+  description: "Como matrícula, certificado de registro, licencias y permisos",
 });
 requestMap.set(2, {
   name: "Información transaccional.",
@@ -44,13 +44,16 @@ requestMap.set(5, {
 export const resultMap = new Map();
 resultMap.set(1, {
   name: "una Alianza.",
-  description: "",
+  description:
+    "Con el fin de obtener beneficios mutuos, esto puede implicar compartir recursos, conocimientos, tecnología, clientes o canales de distribución",
 });
 resultMap.set(2, {
   name: "Estudios e investigación.",
-  description: "",
+  description:
+    "Investigación y análisis de datos de manera ética y responsable para generar aportes como identificar nuevas oportunidades, generar aportes sociales en conocimiento o mejorar procesos",
 });
 resultMap.set(3, {
   name: "un Perfilamiento o historiales.",
-  description: "",
+  description:
+    "Recopilación, análisis e interpretación de información específica de tu empresa con el objetivo de obtener conocimientos útiles y relevantes para toma de decisiones. Esto puede incluir datos financieros, de ventas, de clientes, de producción, entre otros",
 });

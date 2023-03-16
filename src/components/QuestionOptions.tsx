@@ -22,13 +22,16 @@ export const QuestionOptions = ({
 
   const updateQuestion = (value: string, pos: number) => {
     setQuestion(pos);
-    localStorage.setItem(`question_${type}${index}`, JSON.stringify({ title, type, answer: value }));
+    localStorage.setItem(
+      `question_${type}${index}`,
+      JSON.stringify({ title, type, answer: value }),
+    );
     refreshAnswers();
   };
 
   return (
     <div>
-      <p className="title" style={{ textAlign: "center" }}>
+      <p className="title" style={{ textAlign: "center", color: desc ? undefined : 'black' }}>
         {title}
       </p>
       {desc && (
@@ -62,6 +65,28 @@ export const QuestionOptions = ({
           );
         })}
       </ButtonGroup>
+      {JSON.stringify(options) ===
+        JSON.stringify(["1", "2", "3", "4", "5"]) && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <p
+            className="normal"
+            style={{ textAlign: "center", color: "#19417f" }}
+          >
+            Definitivamente NO
+          </p>
+          <p
+            className="normal"
+            style={{ textAlign: "center", color: "#19417f" }}
+          >
+            Definitivamente
+          </p>
+        </div>
+      )}
     </div>
   );
 };

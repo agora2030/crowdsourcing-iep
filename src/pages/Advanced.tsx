@@ -28,7 +28,7 @@ function Advanced() {
     document.body.classList.add("overflow-hidden");
     for (let i = 0; i < 30; i++) {
       localStorage.removeItem(`question_swipe${i}`);
-    }    
+    }
     return () => {
       document.body.classList.remove("overflow-hidden");
     };
@@ -104,7 +104,7 @@ function Advanced() {
           {questions.length - currentIndex} de {questions.length}
         </h2>
         <h2 className="infoText" style={{ marginTop: 0 }}>
-          Autorizarías compartir tu información en este caso:
+          Autorizarías compartir tus datos y/o de tu empresa en este caso:
         </h2>
       </div>
       <div className="cardContainer">
@@ -138,24 +138,24 @@ function Advanced() {
       </div>
       <div className="buttons">
         <button
-          style={{ display: canSwipe ? "flex" : "none" }}
+          style={{ display: canSwipe ? "flex" : "none", marginBottom: 0 }}
           onClick={() => swipe("left")}
         >
           <ArrowFatLineLeft
             style={{ marginRight: "5px" }}
-            size={28}
+            size={26}
             weight="fill"
           />
           NO autorizaría
         </button>
         <button
-          style={{ display: canSwipe ? "flex" : "none" }}
+          style={{ display: canSwipe ? "flex" : "none", marginBottom: 0 }}
           onClick={() => swipe("right")}
         >
           ¡Autorizaría!
           <ArrowFatLineRight
             style={{ marginLeft: "5px" }}
-            size={28}
+            size={26}
             weight="fill"
           />
         </button>

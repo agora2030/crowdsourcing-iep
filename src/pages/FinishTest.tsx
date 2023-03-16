@@ -42,7 +42,7 @@ export default function FinishTest() {
       </h1>
       <p style={{ marginBottom: "25px" }}>
         A finales del 2023 presentaremos el estudio sobre las preferencias de
-        los emprearios para compartir sus datos basándonos en los resultados de
+        los empresarios para compartir sus datos basándonos en los resultados de
         este sitio. Pronto tendremos novedades que compartir contigo. Sé el
         primero en conocerlas apuntando tu correo aquí y siguiéndonos en redes
         sociales. Para más información, contáctanos en info@agora2030.org
