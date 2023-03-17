@@ -79,7 +79,7 @@ export const PrivacyContent = () => {
         aceptando, rechazando o configurando tus preferencias. Siempre tendrás
         toda la información necesaria disponible en esta política. Y, si tienes
         cualquier duda, puedes contactar con nosotros a través de
-        info@agora2030.org
+        protecciondedatos@agora2030.org
       </p>
 
       <p className="title">
