@@ -46,6 +46,7 @@ export const RowCard = ({
           margin: "0 0 0 0",
           fontFamily: "Alatsi",
           color: "#19417f",
+          fontSize: "1.4rem",
         }}
       >
         {selectedType.title}

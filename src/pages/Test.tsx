@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { QuestionOptions } from "../components/QuestionOptions";
@@ -35,8 +35,8 @@ export default function Test() {
         className="normal"
         style={{ textAlign: "center", fontSize: "18px", marginTop: "15px" }}
       >
-        Imaginemos que quieres compartir datos tuyos y/o de tu empresa, pero descubres que hay algunos
-        riesgos
+        Imaginemos que quieres compartir datos tuyos y/o de tu empresa, pero
+        descubres que hay algunos riesgos
       </p>
       <h2 className="title-main" style={{ marginTop: "5px" }}>
         ¿Compartirías con estos riesgos?
@@ -74,12 +74,38 @@ export default function Test() {
         refreshAnswers={refreshAnswers}
       />
 
+      <p className="normal" style={{ marginTop: "25px", marginBottom: "15px" }}>
+        ¿Considerás que existe otro riesgo crítico?
+      </p>
+      <TextField
+        label="Otro"
+        multiline
+        inputProps={{ maxLength: 200, style: { fontFamily: "Alatsi" } }}
+        InputLabelProps={{ style: { fontFamily: "Alatsi" } }}
+        fullWidth
+        rows={2}
+        defaultValue=""
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          localStorage.setItem("other_risk", event.target.value);
+        }}
+        sx={{
+          '& label.Mui-focused': {
+            color: "#19417f"
+          },
+          "& .MuiOutlinedInput-root": {
+            "&.Mui-focused fieldset": {
+              borderColor: "#19417f",
+            },
+          },
+        }}
+      />
+
       <p
         className="normal"
-        style={{ textAlign: "center", fontSize: "18px", marginTop: "45px" }}
+        style={{ textAlign: "center", fontSize: "18px", marginTop: "35px" }}
       >
-        Ahora imagina que NO deseas compartir tus datos y/o de tu empresa pero te ofrecen
-        algunos beneficios a cambio de estos
+        Ahora imagina que NO deseas compartir tus datos y/o de tu empresa pero
+        te ofrecen algunos beneficios a cambio de estos
       </p>
       <h2 className="title-main" style={{ marginTop: "5px" }}>
         ¿Compartirías con estos beneficios?
@@ -108,6 +134,32 @@ export default function Test() {
         desc="A cambio de compartir los datos, te ofrecen una cantidad de dinero proporcional a la cantidad de datos que compartes."
         options={["1", "2", "3", "4", "5"]}
         refreshAnswers={refreshAnswers}
+      />
+
+      <p className="normal" style={{ marginTop: "25px", marginBottom: "15px" }}>
+        ¿Considerás que existe otro beneficio que te gustaría recibir?
+      </p>
+      <TextField
+        label="Otro"
+        multiline
+        inputProps={{ maxLength: 200, style: { fontFamily: "Alatsi" } }}
+        InputLabelProps={{ style: { fontFamily: "Alatsi" } }}
+        fullWidth
+        rows={2}
+        defaultValue=""
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          localStorage.setItem("other_benefit", event.target.value);
+        }}
+        sx={{
+          '& label.Mui-focused': {
+            color: "#19417f"
+          },
+          "& .MuiOutlinedInput-root": {
+            "&.Mui-focused fieldset": {
+              borderColor: "#19417f",
+            },
+          },
+        }}
       />
 
       <Button

@@ -8,12 +8,13 @@ import {
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { QuestionOptions } from "../components/QuestionOptions";
+import { COUNTRIES } from "../utils/countries";
 import { CLIENT } from "../utils/database";
 
 export default function Profile() {
   const navigate = useNavigate();
   const [country, setCountry] = useState("");
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState<string[]>([]);
   const [answers, setAnswers] = useState<(string | null)[]>([]);
 
   useEffect(() => {
@@ -39,6 +40,9 @@ export default function Profile() {
           )
           .sort();
         setCountries(filterCountries);
+      })
+      .catch(() => {
+        setCountries(COUNTRIES);
       });
     document.body.classList.add("overflow-y");
     for (let i = 0; i < 4; i++) {
@@ -105,10 +109,21 @@ export default function Profile() {
       />
 
       <FormControl fullWidth style={{ marginTop: "25px" }}>
-        <InputLabel id="demo-simple-select-label">País</InputLabel>
+        <InputLabel
+          style={{
+            fontFamily: "Alatsi",
+          }}
+          sx={{
+            "&.Mui-focused": {
+              color: "#19417f",
+            },
+          }}
+        >
+          País *
+        </InputLabel>
         <Select
           value={country}
-          label="País"
+          label="País *"
           onChange={(event) => {
             setCountry(event.target.value as string);
             localStorage.setItem(
@@ -121,23 +136,12 @@ export default function Profile() {
             );
             refreshAnswers();
           }}
-          inputProps={{
-            style: {
-              borderColor: "#19417f",
-              color: "#19417f",
-              fontFamily: "Alatsi",
-            },
-          }}
           sx={{
-            color: "red",
             "& .MuiInputBase-input": {
-              color: "#19417f",
               textAlign: "justify",
-              alignSelf: "center",
               fontFamily: "Alatsi",
-              border: "1px solid #ced4da",
             },
-            "&:focus": {
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
               borderColor: "#19417f",
             },
           }}
@@ -145,7 +149,7 @@ export default function Profile() {
           {countries?.map((country) => (
             <MenuItem
               key={country}
-              style={{ fontFamily: "Alatsi", color: "#19417f" }}
+              style={{ fontFamily: "Alatsi" }}
               value={country}
             >
               {country}
@@ -198,11 +202,20 @@ export default function Profile() {
               if (questionProfileLocal) questions.push(questionProfileLocal);
             }
             if (questionsSwipe.length !== 30) navigate("/questions");
-            if (questionsRisks.length !== 3 || questionsBenefits.length !== 3) navigate("/test");
+            if (questionsRisks.length !== 3 || questionsBenefits.length !== 3)
+              navigate("/test");
+            const others = {
+              risk: localStorage.getItem("other_risk"),
+              benefit: localStorage.getItem("other_benefit"),
+            };
             const query =
               "INSERT INTO answers (`questions_data`) VALUES (:questions_data)";
             const params = {
-              questions_data: JSON.stringify({ questionsSwipe, questions }),
+              questions_data: JSON.stringify({
+                questionsSwipe,
+                questions,
+                others,
+              }),
             };
             const conn = CLIENT.connection();
             await conn.execute(query, params);

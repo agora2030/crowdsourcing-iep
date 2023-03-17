@@ -8,6 +8,7 @@ export const QuestionOptions = ({
   options,
   orientation = "horizontal",
   type,
+  mandatory = true,
   refreshAnswers,
 }: {
   index: string;
@@ -16,6 +17,7 @@ export const QuestionOptions = ({
   options: Array<string>;
   orientation?: "horizontal" | "vertical";
   type: "risk" | "benefit" | "profile";
+  mandatory?: boolean;
   refreshAnswers: () => void;
 }) => {
   const [question, setQuestion] = useState<number>();
@@ -31,7 +33,11 @@ export const QuestionOptions = ({
 
   return (
     <div>
-      <p className="title" style={{ textAlign: "center", color: desc ? undefined : 'black' }}>
+      <p
+        className="title"
+        style={{ textAlign: "center", color: desc ? undefined : "black" }}
+      >
+        {mandatory && !desc && <span style={{ color: "red" }}>{`(*) `}</span>}
         {title}
       </p>
       {desc && (
@@ -39,6 +45,7 @@ export const QuestionOptions = ({
           className="normal"
           style={{ textAlign: "center", marginTop: "15px" }}
         >
+          {mandatory && <span style={{ color: "red" }}>{`(*) `}</span>}
           {desc}
         </p>
       )}

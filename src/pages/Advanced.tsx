@@ -103,7 +103,7 @@ function Advanced() {
         <h2 className="infoText" style={{ marginBottom: 0 }}>
           {questions.length - currentIndex} de {questions.length}
         </h2>
-        <h2 className="infoText" style={{ marginTop: 0 }}>
+        <h2 className="infoText" style={{ marginTop: 0, marginBottom: 0 }}>
           Autorizarías compartir tus datos y/o de tu empresa en este caso:
         </h2>
       </div>
@@ -136,7 +136,22 @@ function Advanced() {
           );
         })}
       </div>
+
       <div className="buttons">
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <p
+            style={{
+              margin: 0,
+              color: "#19417f",
+              maxWidth: "300px",
+            }}
+          >
+            Puedes arrastrar las tarjetas, usar los botones o tu teclado para
+            responder cada caso.
+          </p>
+        </div>
         <button
           style={{ display: canSwipe ? "flex" : "none", marginBottom: 0 }}
           onClick={() => swipe("left")}

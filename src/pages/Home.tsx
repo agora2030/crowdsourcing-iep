@@ -10,6 +10,7 @@ export default function Home() {
   const [openPrivacy, setOpenPrivacy] = useState(false);
   const [dialogOpened, setDialogOpened] = useState(Boolean(acceptedTermsLocal) || false);
   const [acceptedTerms, setAcceptedTerms] = useState(Boolean(acceptedTermsLocal) || false);
+  const [clickButton, setClickButton] = useState(false);
 
   const handleClickDialog = () => {
     setOpenPrivacy(!openPrivacy);
@@ -67,7 +68,8 @@ export default function Home() {
       ) : (
         <Button
           style={{
-            color: "#19417f",
+            color: clickButton && disabled ? 'red' : "#19417f",
+            fontSize: clickButton && disabled ? '1.25rem' : undefined,
             marginBottom: "15px",
             fontFamily: "Alatsi",
             textDecoration: "underline",
@@ -75,19 +77,22 @@ export default function Home() {
           variant="text"
           onClick={handleClickDialog}
         >
-          Leer y aceptar la política de privacidad y uso de datos de este sitio.
+          Debes leer y aceptar la política de privacidad y uso de datos de este sitio.
         </Button>
       )}
       <p className="normal"></p>
       <Button
         style={{
-          backgroundColor: disabled ? undefined : "#19417f",
+          backgroundColor: "#19417f",
           marginBottom: "15px",
           fontFamily: "Alatsi",
         }}
-        disabled={disabled}
         variant="contained"
         onClick={() => {
+          if (disabled) {
+            setClickButton(true);
+            return;
+          }
           navigate("/questions");
         }}
       >
