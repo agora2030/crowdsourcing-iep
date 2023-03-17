@@ -33,7 +33,7 @@ export default function Home() {
       <p style={{ marginBottom: "35px" }}>
         Sé parte de la iniciativa de Agora que busca construir una política que
         le permita a empresarios/emprendedores como tú, compartir datos de forma
-        segura y eficiente. ¿Cómo? Contestando unas pocas siguientes preguntas,
+        segura y eficiente. ¿Cómo? Contestando las siguientes preguntas,
         nos ayudarás a definir una política más justa y beneficiosa para los
         empresarios, empresarias y sus clientes.
       </p>

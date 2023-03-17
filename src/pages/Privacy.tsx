@@ -15,6 +15,21 @@ export const PrivacyContent = () => {
     <div>
       <h1 className="title-main">POLÍTICA DE PRIVACIDAD</h1>
       <p className="title">
+        ¿Qué y por qué es importante para ti una política de datos?
+      </p>
+      <p className="normal">
+        Una política de datos es un conjunto de reglas y principios que rigen la
+        recopilación, el uso, el almacenamiento y el intercambio de tú
+        información. Es importante que esté bien definida porque te permite
+        proteger la privacidad y seguridad de tus datos, garantizar la legalidad
+        de la información y mantener la transparencia y confianza entre tú y la
+        herramienta o servicio que estás utilizando. <br />
+        Sin una política de datos clara, te puedes enfrentar riesgos como
+        pérdida de datos, violaciones de privacidad y seguridad, multas y
+        sanciones legales, daño a la reputación y pérdidas de confianza entre
+        los involucrados.
+      </p>
+      <p className="title">
         ¿Quién es el responsable de tratamiento de tus datos personales?
       </p>
       <p className="normal">
@@ -28,7 +43,7 @@ export const PrivacyContent = () => {
       <p className="title">¿Con qué finalidad tratamos tus datos personales?</p>
       <p className="normal">
         La organización sin ánimo de lucro Agora, la cual presta soporte a esta
-        página web, manifierta que este proyecto es totalmente anónimo y, por
+        página web, manifiesta que este proyecto es totalmente anónimo y, por
         ello, el cuestionario no recoge ni esta relacionado ningún dato de
         carácter personal, de esta manera tus respuestas no pueden asociarse a
         ti de ninguna forma. Los únicos datos personales que podemos recoger son
@@ -88,11 +103,13 @@ export const PrivacyContent = () => {
       <p className="normal">
         No estas autorizando/rechazando nada en particular, simplemente estas
         respondiendo las preguntas que nos servirán como insumo para construir
-        la política de datos de nuestra Plataforma de Itercambio de Información
+        la política de datos de nuestra Plataforma de Intercambio de Información
         (IEP).
       </p>
 
-      <p className="title">¿Qué es una IEP?</p>
+      <p className="title">
+        ¿Qué es una Plataforma de Intercambio de Información (IEP)?
+      </p>
       <p className="normal">
         Actualmente la planteamos como: Una plataforma digital diseñada para
         facilitar la comunicación y colaboración entre personas en el ámbito
