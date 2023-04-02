@@ -15,7 +15,7 @@ export const PrivacyContent = () => {
     <div>
       <h1 className="title-main">POLÍTICA DE PRIVACIDAD</h1>
       <p className="title">
-        ¿Qué y por qué es importante para ti una política de datos?
+        ¿Qué es y por qué es importante para ti una política de datos?
       </p>
       <p className="normal">
         Una política de datos es un conjunto de reglas y principios que rigen la
